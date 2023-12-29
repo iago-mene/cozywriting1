@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy writing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="icon" href="covers/catgif.gif" type="image/png">
+    <link rel="shortcut icon" href="covers/catgif.gif" type="image/png">
+    <meta http-equiv="explorer">
+</head>
+<body>
+    <div class="flex-container">
+        <div class="notes-container">
+            <div class="dropdown-container">
+                <select id="fontSizeSelector">
+                    <option value="20">20px</option>
+                    <option value="14">14px</option>
+                    <option value="16">16px</option>
+                    <option value="18">18px</option>
+                    <option value="20">20px</option>
+                    <option value="22">22px</option>
+                    <option value="24">24px</option>
+                    <option value="26">26px</option>
+                    <option value="28">28px</option>
+                    <option value="30">30px</option>
+                    <option value="32">32px</option>
+                    <option value="34">34px</option>
+                    <option value="36">36px</option>
+                    <option value="38">38px</option>
+                    <option value="40">40px</option>
+                    <option value="42">42px</option>
+                    <option value="44">44px</option>
+                </select>
+                <select id="fontSelector">
+                    <option value="Oxanium">Oxanium (default)</option>
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="Brush Script MT, cursive">Brush Script MT</option>
+                    <option value="Comic Sans MS, cursive">Comic sans MS</option>
+                    <option value="Courier New, monospace">Courier New</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="Tahoma, sans-serif">Tahoma</option>
+                    <option value="Times New Roman, serif">Times New Roman</option>
+                    <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
+                    <option value="Verdana, sans-serif">Verdana</option>
+                </select>
+                <input type="color" id="colorPicker" title="Color picker"></input>
+            </div>
+            <textarea id="TextArea" placeholder="What's on your mind?" style="font-size: 20px"; spellcheck="false"></textarea>
+            <div class="buttons-container">
+            <button id="saveButton">
+                <span class="material-icons">
+                    save
+                </span>
+            </button>
+            <button id="rainButton">
+                <span class="material-icons">
+                    format_color_reset
+                </span>
+            </button>
+            <button id="playButton">
+                <span class="material-icons">play_arrow</span>
+            </button>
+            <button id="prevButton">
+                <span class="material-icons">skip_previous</span>
+            </button>
+            <button id="nextButton">
+                <span class="material-icons">skip_next</span>
+            </button>
+            <button id="toggleModeButton">
+                <span class="material-icons">light_mode</span>
+            </button>
+            <button id="bgButton">
+                <span class="material-icons">wallpaper</span>
+            </button>
+            <button id="clockButton" hidden>
+                <span class="material-icons">schedule</span>
+            </button>
+            </div>
+            <div id="currentSong"></div>
+        </div>
+        <div class="window-container" id="movableWindow">
+            <div class="window-header" id="windowHeader">
+                Clock
+                <span class="close-button" id="closeClockWindowButton" onclick="closeWindow()">×</span>
+            </div>
+            <div class="window-content">
+                <p id="clock"></p>
+            </div>
+        </div>
+        <audio id="closeWindowAudio">
+            <source src="sfx/closewindow.mp3" type="audio/mp3">
+        </audio>
+        <div class="volume-container">
+            <div class="volume-musiccontainer">
+                <p class="volumemusictext">Music volume:</p>
+                <input type="range" id="volume" name="volume" min="0" max="100" value="50" step="1">
+            </div>
+            <div class="volume-raincontainer">
+                <p class="volumeraintext">Rain volume:</p>
+                <input type="range" id="volumeRain" name="volumeRain" min="0" max="100" value="50" step="1">
+            </div>
+        </div>
+        <img id="catGif" class="catgif" src="covers/catgif.gif">
+        <audio id="meowAudio" src="sfx/meow.mp3"></audio>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

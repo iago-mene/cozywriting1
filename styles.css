@@ -1,0 +1,622 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: rgb(58, 43, 150);
+    background-image: url('../covers/gif1.gif');
+    background-blend-mode: hard-light;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Oxanium;
+}
+
+
+.notes-container {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    height: 100vh;
+}
+
+textarea {
+    width: 600px;
+    height: 410px;
+    padding: 10px;
+    margin: auto;
+    display: block;
+    border-top: 5px solid rgb(54, 45, 182);
+    border-left: 5px solid rgb(54, 45, 182);
+    border-right: 5px solid rgb(35, 29, 121);
+    border-bottom: 5px solid rgb(35, 29, 121);
+    border-radius: 2%;
+    font-family: Oxanium;
+    font-size: 16px;
+    color: #000000;
+    background-color: rgba(255, 255, 255, 0.582);
+}
+
+@media screen and (max-width: 600px) {
+
+    .notes-container textarea {
+      width: 70%; /* Adjust the smaller width as needed */
+      height: 340px; /* Adjust the smaller height as needed */
+      transform: translateY(-14%) translateX(-10%);
+    }
+
+    #saveButton, #rainButton, #playButton, #nextButton, #prevButton, #toggleModeButton, #bgButton, #songsButton{
+      transform: translateX(30%)
+    }
+
+    .dropdown-container {
+      transform: translateX(-33%);
+    }
+  
+    #volume,
+    #volumeRain {
+      transform: translateX(-200%);
+    }
+  
+    .volumeraintext{
+      transform: translateX(-137%)
+    }
+
+    .volumemusictext{
+        transform: translateX(-123%)
+    }
+
+    .window-container {
+        display: none;
+    }
+}
+
+#fontSelector {
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    background-color: rgba(52, 21, 136, 0.473);
+    color: #ffffff;
+    font-family: Oxanium;
+    margin-left: 7px;
+}
+
+#fontSelector option {
+    color: #000000; 
+    font-family: Oxanium; 
+}
+
+#fontSizeSelector {
+    padding: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    background-color: rgba(52, 21, 136, 0.473);
+    color: #ffffff;
+    font-family: Oxanium; 
+}
+
+#fontSizeSelector option {
+    color: #000000;
+    font-family: Oxanium; 
+}
+
+.dropdown-container {
+    position: absolute;
+    top: 10px;
+    left: 39.3%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#saveButton {
+    position: fixed;
+    top: 10px; /* Adjust the bottom position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#saveButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#saveButton:hover::after {
+    content: "Save notes?";
+    position: absolute;
+    top: 25%; /* Adjust the distance from the button */
+    right: 22%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+#rainButton{
+    position: fixed;
+    top: 70px; /* Adjust the bottom position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#rainButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#rainButton:hover::after {
+    content: "Rain sound";
+    position: absolute;
+    top: 25%; /* Adjust the distance from the button */
+    right: 30%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#colorPicker:hover{
+    cursor:pointer;
+    background-color: rgba(52, 21, 136, 0.705);
+}
+
+#colorPicker {
+    margin-left: 7px;
+    height: 40px;
+    width: 40px;
+    padding: 2px 2px;
+    align-items: center;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    background-color: rgba(52, 21, 136, 0.473);
+    color: #ffffff;
+}
+
+.window-container {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    width: 200px;
+    height: 140px;
+    background-color: rgba(221, 221, 221, 0.582);
+    border: none;
+    border-radius: 5px;
+    z-index: 1000;
+    cursor: move;
+}
+
+.window-header {
+    padding: 8px;
+    background-color: #1d0ac9a8;
+    color: rgb(255, 255, 255);
+    cursor: move;
+    user-select: none;
+    border-radius: 5px;
+}
+
+.window-content {
+    padding: 10px;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+#clock{
+    position: absolute;
+    top: -50px;
+    left: 17px;    
+    font-size: 62px;
+    text-shadow: 2px 2px 4px #000000;
+    color: #ffffff;
+}
+
+#playButton{
+    position: fixed;
+    top: 130px; /* Adjust the bottom position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#playButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#playButton:hover::after {
+    content: "Play default songs";
+    position: absolute;
+    top: 25%; /* Adjust the distance from the button */
+    right: -13%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+
+#prevButton{
+    position: fixed;
+    top: 250px; /* Adjust the bottom position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#prevButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#prevButton:hover::after {
+    content: "Previous song";
+    position: absolute;
+    top: 25%; /* Adjust the distance from the button */
+    right: 12.5%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+#nextButton{
+    position: fixed;
+    top: 190px; /* Adjust the bottom position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#nextButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#nextButton:hover::after {
+    content: "Next song";
+    position: absolute;
+    top: 25%; /* Adjust the distance from the button */
+    right: 36%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+#toggleModeButton{
+    position: fixed;
+    top: 310px; 
+    right: 20px;
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#toggleModeButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#toggleModeButton:hover::after {
+    content: "Text area color";
+    position: absolute;
+    top: 25%; /* Adjust the distance from the button */
+    right: 7.3%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+#volume{
+    appearance: none;
+    display: block;
+    position: absolute;
+    bottom: 13px;
+    right: 10px;
+    width: 20%;
+    height: 0.4em;
+    outline: none;
+    border-radius: 0.1875em;
+    background: rgb(27, 27, 27);
+    box-shadow: 0.1875em 0.1875em 0.375em #000, 0.0625em 0.0625em 0.0625em #b6aeae;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#volume-value {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+#volume::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: rgb(27, 27, 27);
+    border: 2px solid rgb(60, 0, 128);
+    border-radius: 50%;
+    margin-top: 1px;
+    cursor: pointer;
+}
+
+#volume::-webkit-slider-thumb:hover{
+    background-color: rgb(119, 45, 202);
+    transition: background-color 0.2s ease-in-out;
+}
+
+#volume::-webkit-slider-thumb::before{
+    accent-color: purple;
+}
+
+
+#volumeRain{
+    appearance: none;
+    display: block;
+    position: fixed;
+    bottom: 60px;
+    right: 10px;
+    width: 20%;
+    height: 0.4em;
+    outline: none;
+    border-radius: 0.1875em;
+    background: rgb(27, 27, 27);
+    box-shadow: 0.1875em 0.1875em 0.375em #000, 0.0625em 0.0625em 0.0625em #b6aeae;
+    cursor: pointer;
+}
+
+#volumeRain::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background-color: rgb(27, 27, 27);
+    border: 2px solid rgb(60, 0, 128);
+    border-radius: 50%;
+    margin-top: 1px;
+    cursor: pointer;
+}
+
+#volumeRain::-webkit-slider-thumb:hover{
+    background-color: rgb(119, 45, 202);
+    transition: background-color 0.2s ease-in-out;
+}
+
+#bgButton{
+    position: fixed;
+    top: 370px; /* Adjust the bottom position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#bgButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#bgButton:hover::after {
+    content: "Change background";
+    position: absolute;
+    top: 25%;
+    right: -22%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+#songsButton{
+    position: fixed;
+    top: 430px; /* Adjust the bottom position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#songsButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#songsButton:hover::after {
+    content: "Pick your songs";
+    position: absolute;
+    top: 25%;
+    right: 3%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+#clockButton{
+    position: fixed;
+    top: 10px; /* Adjust the bottom position as needed */
+    left: 10px; /* Adjust the right position as needed */
+    background: linear-gradient(
+        -45deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+    color: #ffffff;
+    padding: 10px 12px;
+    border: 1px solid #baa7ff;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#clockButton:hover {
+    background: linear-gradient(
+        90deg,
+        rgb(79, 73, 179), rgb(45, 37, 87)
+    );
+}
+
+#clockButton:hover::after {
+    content: "Re-open clock";
+    position: absolute;
+    top: 25%;
+    left: 210%;
+    transform: translateX(-50%);
+    background-color: #2d2574;
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: Oxanium;
+    opacity: 0;
+    animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+.catgif{
+    position: absolute;
+    cursor: pointer;
+}
+
+.volumemusictext, .volumeraintext{
+    font-size: 22px;
+    text-shadow: 4px 4px 5px #000000;
+    color: #ffffff;
+    position: fixed;
+}
+
+.volumeraintext{
+    bottom: 29px;
+    right: 21.5%;
+}
+
+.volumemusictext{
+    bottom: -17px;
+    right: 21.5%;
+}
